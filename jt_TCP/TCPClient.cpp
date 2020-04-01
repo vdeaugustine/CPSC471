@@ -15,9 +15,16 @@
 #include<WinSock2.h>
 #include<WS2tcpip.h>
 #include <fcntl.h>        /* For O_RDONLY */
-
 #define MAX_BUFFER_SIZE 250
 using namespace std;
+
+void sendInfo(const int& sock, const char* input)
+{
+	// Get the size of the user input.
+	int inputSize = strlen(input);
+
+
+}
 
 int main(int argc, char** argv)
 {
@@ -26,6 +33,7 @@ int main(int argc, char** argv)
 	int sockConnect = -1;
 	int portNum = -1;
 	int bytesSent = 0;
+	off_t totalSent = 0;
 	char userMessage[MAX_BUFFER_SIZE];
 
 	sockaddr_in serverAddress;
@@ -59,6 +67,13 @@ int main(int argc, char** argv)
 	serverAddress.sin_family = AF_INET;
 	serverAddress.sin_port = htons(portNum);
 
+	// Convert the IP address from string into serverAddr structure format.
+	if (!inet_pton(AF_INET, argv[1], &serverAddress.sin_addr))
+	{
+		cerr << "Error converting the IP Address.\n";
+		exit(EXIT_FAILURE);
+	}
+
 	// Now try to establish the connection if possible.
 	if (connect(sockConnect, (sockaddr*)&serverAddress, sizeof(sockaddr)) < 0)
 	{
@@ -68,10 +83,20 @@ int main(int argc, char** argv)
 
 	// Tell the user to enter the message.
 	cout << "Enter the message: ";
-	fgets(userMessage, MAX_BUFFER_SIZE - 1, stdin);
+	fgets(userMessage, MAX_BUFFER_SIZE, stdin);
 
 	// Send the bytes of data from the user input over to the server.
+	while (totalSent < bytesSent)
+	{
+		if ((bytesSent = send(sockConnect, userMessage, strlen(userMessage), 0)) < 0)
+		{
+			cerr << "Unable to send the bytes over.\n";
+			exit(EXIT_FAILURE);
+		}
+		totalSent += bytesSent;
+	}
 
+	cout << totalSent << " bytes have sent.\n";
 
 	// Close the socket afterwards.
 	closesocket(sockConnect);
