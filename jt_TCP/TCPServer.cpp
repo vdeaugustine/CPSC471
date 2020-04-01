@@ -14,9 +14,15 @@
 // to work with Winsock functions and definitions.
 #include<WinSock2.h>
 #include<WS2tcpip.h>
-
 #define MAX_BUFFER_SIZE 250
 using namespace std;
+
+void recvInfo(const int& sock, char* input)
+{
+	// Assuming that nothing has been received,
+	// set the size of input to negative.
+	int inputSize = -1;
+}
 
 int main(int argc, char** argv)
 {
@@ -25,6 +31,7 @@ int main(int argc, char** argv)
 	int sockListen = -1;
 	int portNum = -1;
 	int sockConnect = -1;
+	char userMessage[MAX_BUFFER_SIZE];
 	char buffRecv[MAX_BUFFER_SIZE];
 	int bytesRead = 0;
 
@@ -87,8 +94,13 @@ int main(int argc, char** argv)
 
 		cout << "Connection success.\n";
 
-		// Display the number of bytes received and continue to receive
-		// until all of the bytes have been exhausted.
+		// Always set bytes read to 0 for each new incoming data.
+		bytesRead = 0;
+
+		// Read in the size of the user input.
+		recvInfo(sockConnect, userMessage);
+
+		cout << bytesRead << " bytes have been received.\n";
 
 		// Close the socket afterwards.
 		closesocket(sockConnect);
