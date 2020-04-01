@@ -1,5 +1,24 @@
-How to use TCP Client/Server
+How to run C++ TCP Client/Server
 
-Client:
+Open the two terminals. Do the following steps in order:
+1. Type gcc TCPClient.cpp -o client and gcc TCPServer.cpp -o server in order to compile the files.
+(This must be done in order to allow execution of programs!)
+2. Type ./server <PORT NUMBER> in one terminal.
+3. Type ./client <SERVER IP> <PORT NUMBER> in another terminal.
+Make sure that the number of arguments match or the program will not execute at all!
+Also, be sure the port numbers match in order to perform a successful TCP connection.
 
-Server:
+Now follow the steps for the client and server windows:
+
+Client
+--------------------------------------------------------
+1. Type in the message when prompted by the screen.
+2. Wait for the program to send the message over to the server.
+3. Once that is done, the program will end. Be sure to type ./client <SERVER IP> <PORT NUMBER> again to do another run.
+
+
+Server
+--------------------------------------------------------
+1. By default, the server will wait for the client's request to connect.
+2. Once the connection is successful, the server will continue to run indefinitely and receive messages from client.
+3. Leave the window open if you want to continue the server; otherwise, close the window to end the program.
