@@ -1,0 +1,12 @@
+This is the list of commands to use for the FTP client program.
+After the client is connected to the server successfully, the client will
+always have print out (ftp>), prompting for user input as long as the user
+has not inputted 'quit'.
+
+ls: Print out the list of files in the server, even if the directory is empty.
+
+get: Download the file from the server. If said file does not exist in the server, an error will be displayed.
+
+put: Upload the file to the server. If said file already exists in the server, an error will be displayed.
+
+quit: Disconnect from the server and exit FTP session.
