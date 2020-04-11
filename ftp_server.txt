@@ -1,0 +1,14 @@
+Import the socket.
+
+Declare a port number and select which number to listen.
+Create a new server socket and set it to AF_INET and TCP mode.
+Now bind the server socket to the port number.
+Begin listening onto the server socket.
+
+#Continue to accept connections as long as the server is running.
+while True:
+	Create a new client socket and address and assign both to accept() from server socket.
+	Declare a file size variable and set to 0.
+	Declare a file size buffer and set to empty string.
+	Obtain the file size by converting file size buffer to int.
+	Close the client socket.

@@ -1,0 +1,17 @@
+Import the socket.
+
+Check if the number of arguments are valid.
+If len(sys.argv) < 2:
+	Print "USAGE python " + sys.argv[0] + " <FILE NAME>"
+	Exit the program.
+
+Declare a server address and choose any name.
+Declare a server port number and select any number.
+Declare a file name variable and assign sys.argv[1] to it.
+Try to open the file as read-only if possible.
+Create a new client socket and set it to AF_INET and TCP mode.
+Now connect to the server using its address and port number.
+
+while True:
+
+Close the client socket.
