@@ -1,0 +1,29 @@
+while (true):
+	Print "ftp>" to the user.
+	User types down the command input.
+
+	If command input is 'ls':
+		Print "Now printing out the directory"
+
+	Else command input is 'get <filename>':
+		Check if the file exists in the server.
+		If file does not exist in the server:
+			Print "Cannot retrive the file from the server."
+			Break.
+		Download the file from the server.
+		Print "File successfully downloaded."
+
+	Else command input is 'put <filename>':
+		Check if the file already exists in the server.
+		If file already exists in the server:
+			Print "Another file already exists in the server."
+			Break.
+		Upload the file to the server.
+		Print "File successfully uploaded."
+
+	Else command input is 'quit':
+		Print "Disconnecting from server."
+		Break out of the while loop.
+
+	Else:
+		Print "Invalid command."
