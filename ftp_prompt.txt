@@ -7,16 +7,20 @@ while (true):
 		Print "Now printing out the directory"
 		Print the directory list of files, even if said directory is empty.
 
-	Else if command input starts with 'get <filename>':
-		Check if the file exists in the server.
+	Else if command input starts with 'get':
+		Have the user enter the filename.
+		Check if the specified path for the filename exists.
 		If file does not exist in the server:
 			Print "Cannot retrive the file from the server."
 		Else if file does exist in the server:
-			Download the file from the server.
-			Print "File successfully downloaded."
+			Create a variable that will contain the selected filename.
+			Open the local file containing the selected filename.
+			Retrive the local file and write with the selected filename.
+			Close the local file.
 
 	#Assume that the 'put' command disallows duplicate files.
-	Else if command input starts with 'put <filename>':
+	Else if command input starts with 'put':
+		Have the user enter the filename.
 		Check if the file already exists in the server.
 		If file already exists in the server:
 			Print "Another file already exists in the server."
