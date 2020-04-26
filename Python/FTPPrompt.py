@@ -1,4 +1,7 @@
 from socket import *
+import os path
+from os import path
+from ftplib import FTP
 
 serverPort = 12000
 
@@ -16,15 +19,29 @@ while True:
         print("User Entered 'get' command")
 
         pass
+        userFileChoice = input()
         # Check if the file exists in the server
-
+        if(userFileChoice == "file1.txt"):
+            print ("Does the file exist:" + str(path.exists(userFileChoice)))
+        elif(userFileChoice == "file2.txt"):
+            print ("Does the file exist:" + str(path.exists(userFileChoice)))        
+        elif(userFileChoice == "file3.txt"):
+            print ("Does the file exist:" + str(path.exists(userFileChoice)))  
+        else:
+            print("Cannot retrieve the file from the server.")
         # If the file does not exist in the server:
             # print("Cannot retrieve the file from the server."
             # break
+          
         # else if the file does exist in the server:
             # download the file from the server
-            # print("File successfully downloaded."
+            # print("File successfully downloaded.")
+            chosenFile = userFileChoice
+            file = open(chosenFile, 'wb')
+            ftp.retrbinary('RETR ' + chosenFile, file.write, 1024)
 
+            ftp.quit()
+            file.close()
     elif userInput.lower().startswith('put '):
         print("User Entered 'put' command")
 
