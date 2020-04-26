@@ -9,6 +9,8 @@ while True:
 
     if userInput.startswith('ls'):
         print("Now printing out the directory")
+        print("Here are the files: \nfile1\nfile2\nfile3")
+        
 
     elif userInput.lower().startswith('get '):
         print("User Entered 'get' command")
