@@ -27,21 +27,21 @@ while True:
             print ("Does the file exist:" + str(path.exists(userFileChoice)))        
         elif(userFileChoice == "file3.txt"):
             print ("Does the file exist:" + str(path.exists(userFileChoice)))  
-        else:
-            print("Cannot retrieve the file from the server.")
         # If the file does not exist in the server:
             # print("Cannot retrieve the file from the server."
-            # break
-          
+            # break        
+        else:
+            print("Cannot retrieve the file from the server.")
+       
         # else if the file does exist in the server:
             # download the file from the server
             # print("File successfully downloaded.")
             chosenFile = userFileChoice
-            file = open(chosenFile, 'wb')
-            ftp.retrbinary('RETR ' + chosenFile, file.write, 1024)
+            localfile = open(chosenFile, 'wb')
+            ftp.retrbinary('RETR ' + chosenFile, localfile.write, 1024)
 
             ftp.quit()
-            file.close()
+            localfile.close()
     elif userInput.lower().startswith('put '):
         print("User Entered 'put' command")
 
