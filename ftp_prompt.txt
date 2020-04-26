@@ -1,29 +1,33 @@
+#Continue to run this loop indefinitely until user enters quit.
 while (true):
 	Print "ftp>" to the user.
 	User types down the command input.
 
-	If command input is 'ls':
+	If command input starts with 'ls':
 		Print "Now printing out the directory"
+		Print the directory list of files, even if said directory is empty.
 
-	Else if command input is 'get <filename>':
+	Else if command input starts with 'get <filename>':
 		Check if the file exists in the server.
 		If file does not exist in the server:
 			Print "Cannot retrive the file from the server."
-			Break.
-		Download the file from the server.
-		Print "File successfully downloaded."
+		Else if file does exist in the server:
+			Download the file from the server.
+			Print "File successfully downloaded."
 
-	Else if command input is 'put <filename>':
+	#Assume that the 'put' command disallows duplicate files.
+	Else if command input starts with 'put <filename>':
 		Check if the file already exists in the server.
 		If file already exists in the server:
 			Print "Another file already exists in the server."
-			Break.
-		Upload the file to the server.
-		Print "File successfully uploaded."
+		Else if file does not exist in the server:
+			Upload the file to the server.
+			Print "File successfully uploaded."
 
-	Else if command input is 'quit':
+	Else if command input starts with 'quit':
 		Print "Disconnecting from server."
 		Break out of the while loop.
 
+	#Assuming that the user enters any command other than the 4 above
 	Else:
 		Print "Invalid command."
