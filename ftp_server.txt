@@ -10,5 +10,9 @@ while True:
 	Create a new client socket and address and assign both to accept() from server socket.
 	Declare a file size variable and set to 0.
 	Declare a file size buffer and set to empty string.
+	Receive any number of bytes to indicate the file size.
 	Obtain the file size by converting file size buffer to int.
+	Print out the size of the file.
+	Use recvAll(client socket, file size) to get all the file data.
+	Print out the data file.
 	Close the client socket.
