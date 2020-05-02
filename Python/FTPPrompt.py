@@ -72,7 +72,7 @@ while True:
 
 
 
-    elif userInput.lower().startswilsth('quit'):
+    elif userInput.lower().startswith('quit'):
         print("User Entered 'quit' command")
         print("Disconnecting from server.")
         # break out of while loop
