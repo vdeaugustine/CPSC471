@@ -3,7 +3,8 @@ from socket import *
 import cmds
 import ephemeral
 import sys
-
+import sendFileClient as SFC
+import sendData as sd
 
 
 
@@ -28,6 +29,13 @@ if __name__ == "__main__":
         # Connect to the server
         clientSocket.connect((serverName, serverPort))
 
+        if userInput.startswith('ls'):
+            print("Now printing out the directory")
+            # Tell the server we want to perform ls
+            sd.send_data(clientSocket, 'ls')
+
+
+
     except socket.error as errorFromSocket:
         print("Error occurred with FTP: ", errorFromSocket)
 
@@ -38,9 +46,16 @@ if __name__ == "__main__":
         print("Incorrect invocation. Client should be invoked as: client.py <server machine> <server port>")
         quit()
 
-    # Print arguments
-    for a in sys.argv:
-        print(a)
+    userInput = input("ftp> ")
+
+
+
+
+
+
+    # # Print arguments
+    # for a in sys.argv:
+    #     print(a)
 
 
 

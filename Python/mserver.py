@@ -1,8 +1,28 @@
 # Server Code
 from socket import *
+import sendFileServer as SFS
+
+
+
+
+if __name__ == "__main__":
+
+    numOfArguments = len(sys.argv)
+    if numOfArguments == 2:
+        serverPort = sys.argv[2]
+        if serverPort.isdigit():
+            print("Server port is in right format")
+        else:
+            print("Server port needs to be a digit")
+    else:
+        print("Incorrect invocation. Server should be invoked as: "
+              "server.py <server port>")
+        quit()
+
+
 
 # The port on which to listen
-serverPort = 12000
+# serverPort = 12000
 
 # Create a TCP socket
 serverSocket = socket(AF_INET, SOCK_STREAM)
@@ -13,7 +33,7 @@ serverSocket.bind(('', serverPort))
 # Start listening for incoming connections
 serverSocket.listen(1)
 
-print("The server is ready to receive")
+print("The server is ready to receive...")
 
 # Forever accept incoming connections
 while 1:
