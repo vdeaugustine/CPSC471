@@ -1,18 +1,44 @@
-Import the socket.
+Import argparse, socket, sys, commands, and os.
 
-Declare a port number and select which number to listen.
-Create a new server socket and set it to AF_INET and TCP mode.
-Now bind the server socket to the port number.
-Begin listening onto the server socket.
+Set up the arguments by assigning the port number into the argument.
 
-#Continue to accept connections as long as the server is running.
-while True:
-	Create a new client socket and address and assign both to accept() from server socket.
-	Declare a file size variable and set to 0.
-	Declare a file size buffer and set to empty string.
-	Receive any number of bytes to indicate the file size.
-	Obtain the file size by converting file size buffer to int.
-	Print out the size of the file.
-	Use recvAll(client socket, file size) to get all the file data.
-	Print out the data file.
-	Close the client socket.
+If server port number is not digit:
+	Print "Port number not valid" and exit.
+Else:
+	Set server port number as int(server port number).
+	
+Set up the server socket as IPv4 and TCP format.
+Bind the server port number to the socket.
+Listen for one connection.
+Have socket call accept() to the new connection socket and address.
+
+#Continue to listen for user commands
+while 1:
+	If command is "ls":
+		Open a new data socket connection.
+		Display the directory list of files.
+		Close the connection.
+	If command is "quit":
+		Break out of the while loop.
+	If command is "put":
+		Open a new data socket connection.
+		try:
+			Try to open the file as read-only.
+		except:
+			If file cannot be open, display error message.
+		try:
+			While there are still some bytes to read:
+				Continuously send the bytes of data from the file.
+		finally:
+			Close the socket connection and the file.
+			
+	If command is "get":
+		Open a new data socket connection.
+		If the path exists for the file name:
+			Set up a new .txt file with any name.
+		Now open the file as write-only.
+		While there are still some bytes to write:
+			Continue to receive the number of bytes of data into the file.
+		Close the file.
+		Close the socket connection.
+Close the connection socket.
