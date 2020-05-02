@@ -1,13 +1,14 @@
 from socket import *
-import os path
 from os import path
 from ftplib import FTP
 
 serverPort = 12000
 
+
+
 while True:
 
-    userInput = raw_input("ftp>")
+    userInput = input("ftp>")
 
 
     if userInput.startswith('ls'):
@@ -18,8 +19,7 @@ while True:
     elif userInput.lower().startswith('get '):
         print("User Entered 'get' command")
 
-        pass
-        userFileChoice = input()
+        userFileChoice = input("Enter the file name: ")
         # Check if the file exists in the server
         if(userFileChoice == "file1.txt"):
             print ("Does the file exist:" + str(path.exists(userFileChoice)))
@@ -38,25 +38,41 @@ while True:
             # print("File successfully downloaded.")
             chosenFile = userFileChoice
             localfile = open(chosenFile, 'wb')
-            ftp.retrbinary('RETR ' + chosenFile, localfile.write, 1024)
+            FTP.retrbinary('RETR ' + chosenFile, localfile.write, 1024)
 
-            ftp.quit()
+            #FTP.quit()
             localfile.close()
     elif userInput.lower().startswith('put '):
-        print("User Entered 'put' command")
+        print("User Entered 'put' command\n")
 
-        pass
+        filename = input("Enter the file name: ")
+        print("File name is {filename}")
+
         # Check if the file exists in the server
 
+        print("Checking if the file is in our server directory")
+
+        isInDirectory = False
+
         # If the file already exists in the server:
-            # print("Another file already exists in the server."
-            # break
+        if isInDirectory:
+            print("File is already in directory")
+
 
         # else if the file does not already exists in the server:
-            # Upload the file to the server
-            # print("File successfully uploaded")
+        # Upload the file to the server
+        # print("File successfully uploaded")
+        else:
+            print("Adding file to directory")
+            
+        print("File successfully uploaded")
+        print("Now printing out the directory")
+        print("Here are the files: \nfile1\nfile2\nfile3\n{file}".format(file = filename))
 
-    elif userInput.lower().startswith('quit'):
+
+
+
+    elif userInput.lower().startswilsth('quit'):
         print("User Entered 'quit' command")
         print("Disconnecting from server.")
         # break out of while loop
