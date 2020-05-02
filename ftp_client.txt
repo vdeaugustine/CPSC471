@@ -1,29 +1,20 @@
-Import the socket.
+Import the argparse, socket, sys, cmd, and os.
 
-Check if the number of arguments are valid.
-If len(sys.argv) < 2:
-	Print "USAGE python " + sys.argv[0] + " <FILE NAME>"
-	Exit the program.
+Set up the arguments by assigning the server name and port number into the argument.
 
-Declare a server address and choose any name.
-Declare a server port number and select any number.
-Declare a file name variable and assign sys.argv[1] to it.
-Try to open the file as read-only if possible.
-Create a new client socket and set it to AF_INET and TCP mode.
-Now connect to the server using its address and port number.
-
-While True:
-	Create a new data variable and store the number of bytes from the text file into it.
+If server port number is not digit:
+	Print "Port number not valid" and exit.
+Else:
+	Set server port number as int(server port number).
 	
-	If end-of-line is not reached for the text file:
-		Create a data size string and assign the string of size of read data to it.
-		Create a variable that will read the number of bytes sent.
-		Prepend the size of data to file data.
-		While size of file data > bytes sent:
-			Have client socket send the bytes of data over and add to bytes sent variable.
-	
-	Else:
-		Break out of the while loop.
+try:
+	Try to create a new client socket (IPv4, TCP format) if possible.
 
-Print the number of bytes sent.
+	Now try to connect to the server with its name and port number if possible.
+
+	Prompt the user to enter the FTP command.
+	Continue to loop through the command indefinitely until user enters "quit".
+except socket error:
+	Print "An unexpected error has occured."
+
 Close the client socket.
