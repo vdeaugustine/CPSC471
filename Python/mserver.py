@@ -1,8 +1,7 @@
 # Server Code
 from socket import *
 import sendFileServer as SFS
-
-
+import receiveAllData as rAD
 
 
 if __name__ == "__main__":
@@ -18,7 +17,6 @@ if __name__ == "__main__":
         print("Incorrect invocation. Server should be invoked as: "
               "server.py <server port>")
         quit()
-
 
 
 # The port on which to listen

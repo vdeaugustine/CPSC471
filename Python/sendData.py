@@ -1,5 +1,6 @@
 import socket
 
+
 def send_data (sockPassed, data_passed):
 
     size_of_data = str(len(data_passed))

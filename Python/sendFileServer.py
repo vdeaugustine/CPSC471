@@ -36,8 +36,8 @@ def sendFileServer(listenPort):
 
         return receiveBuffer
 
-
     while True:
+
         print("Waiting for connections...")
 
         # Accept connections

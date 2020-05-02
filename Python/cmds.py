@@ -11,3 +11,9 @@ def run_ls():
 
 
 
+def run_put():
+	pass
+
+
+def run_get():
+	pass

@@ -1,0 +1,59 @@
+# ----------- mclient.py ---------------------
+
+    main file that will run the client application
+
+# ----------- mserver.py ---------------------
+
+    main file that will run the server application
+
+
+# ----------- cmds.py ---------------------
+
+    run_ls()
+
+    run_put()
+
+    run_get()
+
+# ----------- ephemeral.py ---------------------
+
+    returns a new welcome socket
+
+# ----------- receiveAllData.py ---------------------
+
+    receive(the_socket) -- receives header of the message that is to be sent
+
+    receive_all_data(the_socket, number_of_bytes):
+        parameters: socket to be used, total number of bytes to be received
+
+        receive the data from the socket
+        return the data
+
+
+
+
+# ----------- sendData.py ---------------------
+
+    send_data (sockPassed, data_passed)
+
+        Makes header and sends data
+
+        parameters: socket and data to be sent
+
+        returns nothing
+
+
+# ----------- sendFileClient.py ---------------------
+
+    sendFileClient(serverAddress, serverPort, fileName)
+
+        Send a file with
+
+        Adds a 10 byte header to each message being sent
+        The header includes the file size
+
+# ----------- sendFileServer.py ---------------------
+
+    sendFileServer(listenPort)
+
+        server receives the file and prints its contents
