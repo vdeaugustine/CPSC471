@@ -2,13 +2,11 @@ import socket
 
 
 def receive(the_socket):
-    print("Calling recv() in server")
 
     data = ""
     size_of_file = 0
     file_size_buffer = ""
     file_size_buffer = receive_all_data(the_socket, 10)
-    print("file_size_buff before int cast: ", file_size_buffer)
     size_of_file = int(file_size_buffer)
 
     data = receive_all_data(the_socket, size_of_file)
