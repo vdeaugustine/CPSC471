@@ -5,6 +5,7 @@ import ephemeral
 import sys
 import sendFileClient as SFC
 import sendData as sd
+import receiveAllData as rAD
 
 
 
@@ -30,14 +31,17 @@ if __name__ == "__main__":
     # Connect to the server
     print("trying to connect to server")
     clientSocket.connect((serverName, serverPort))
-    quit()
+
+    userInput = input("ftp> ")
 
     if userInput.startswith('ls'):
         print("Now printing out the directory")
         # Tell the server we want to perform ls
         sd.send_data(clientSocket, 'ls')
-
-
+        temporaryPort = int(rAD.receive(clientSocket))
+        data_socket = socket(AF_INET, SOCK_STREAM)
+        data_socket.connect((serverName, temporaryPort))
+        t_buffer = ""
 
     # except socket.error as errorFromSocket:
     #     print("Error occurred with FTP: ", errorFromSocket)
@@ -49,7 +53,7 @@ if __name__ == "__main__":
         print("Incorrect invocation. Client should be invoked as: client.py <server machine> <server port>")
         quit()
 
-    userInput = input("ftp> ")
+
 
 
 

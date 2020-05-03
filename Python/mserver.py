@@ -36,6 +36,14 @@ if __name__ == "__main__":
         connectionSocket, addr = serverSocket.accept()
 
         print("Accepted and created connectionSocket. address is: ", addr)
+
+        instr = rAD.receive(connectionSocket)
+
+        print("Instr: ", instr)
+
+
+
+
         # Temporary buffer
         tmpBuff = ""
         data = ""
