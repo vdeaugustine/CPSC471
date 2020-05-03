@@ -40,7 +40,7 @@ while True:
             localfile = open(chosenFile, 'wb')
             FTP.retrbinary('RETR ' + chosenFile, localfile.write, 1024)
 
-            #FTP.quit()
+            FTP.quit()
             localfile.close()
     elif userInput.lower().startswith('put '):
         print("User Entered 'put' command\n")

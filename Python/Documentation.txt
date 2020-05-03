@@ -1,0 +1,119 @@
+# ----------- mclient.py ---------------------
+
+    main file that will run the client application
+
+# ----------- mserver.py ---------------------
+
+    main file that will run the server application
+
+
+# ----------- cmds.py ---------------------
+
+    run_ls()
+
+    run_put()
+
+    run_get()
+
+# ----------- ephemeral.py ---------------------
+
+    returns a new welcome socket
+
+# ----------- receiveAllData.py ---------------------
+
+    receive(the_socket) -- receives header of the message that is to be sent
+
+    receive_all_data(the_socket, number_of_bytes):
+        parameters: socket to be used, total number of bytes to be received
+
+        receive the data from the socket
+        return the data
+
+
+
+
+# ----------- sendData.py ---------------------
+
+    send_data (sockPassed, data_passed)
+
+        Makes header and sends data
+
+        parameters: socket and data to be sent
+
+        returns nothing
+
+
+# ----------- sendFileClient.py ---------------------
+
+    sendFileClient(serverAddress, serverPort, fileName)
+
+        Send a file
+
+        Adds a 10 byte header to each message being sent
+        The header includes the file size
+
+# ----------- sendFileServer.py ---------------------
+
+    sendFileServer(listenPort)
+
+        server receives the file and prints its contents
+
+
+
+
+
+
+# ---------------- Schema -----------------------
+
+    Run mserver.py with port number as argument
+
+    mserver checks that it has one argument and that argument is digit
+
+    mserver sets up server socket
+
+    server socket listens for one connection
+
+
+    run mclient.py with server name and port number as arguments
+
+    mclient.py checks that server port is digit
+
+    mclient creates a client_socket
+
+    mclient connects to server
+
+    mserver creates a connection_socket and accepts connection using server_socket
+
+    mclient is prompted for user input ftp commands
+
+    for each ftp command, mclient sends a message to server saying what command
+                using client_socket
+
+    mclient creates a temporary port by calling receive, passing 
+		the client socket as an argument and casting the 
+		return value as an int
+
+    mclient creates a data_socket and connects to the server
+
+
+    mserver uses receive() to accept the command through connection_socket
+
+    if command is ls
+
+
+        mserver creates temporary buffer
+
+        mserver creates a data_socket using do_ephemeral()
+
+        temporary buffer is filled with ls stuff using commands.getoutput or something similar
+
+        mserver calls senddata to send what is in temporary buffer (i.e. the ls stuff) to client using the data_socket
+
+        mserver closes the data_socket
+
+        mclient is calling while True loop
+            filling a buffer for incoming ls data from server through data_socket
+
+            if buffer is empty, break the loop
+
+        close the data_socketsocket
