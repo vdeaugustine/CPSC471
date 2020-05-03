@@ -1,8 +1,6 @@
 from socket import *
-import cmds
 import ephemeral
 import sys
-import sendFileClient as SFC
 import sendData as sd
 import receiveAllData as rAD
 

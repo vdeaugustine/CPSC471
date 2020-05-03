@@ -1,6 +1,5 @@
 
 from socket import *
-import sendFileServer as SFS
 import receiveAllData as rAD
 import sys
 
