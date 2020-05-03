@@ -18,26 +18,29 @@ if __name__ == "__main__":
         # Check that server port is a digit
         if serverPort.isdigit():
             print("Server port is in right format")
+            serverPort = int(serverPort)
         else:
             print("Server port needs to be a digit")
         # print(serverName, serverPort)
 
-    try:
-        # Create a socket
-        clientSocket = socket(AF_INET, SOCK_STREAM)
+    # try:
+    # Create a socket
+    clientSocket = socket(AF_INET, SOCK_STREAM)
 
-        # Connect to the server
-        clientSocket.connect((serverName, serverPort))
+    # Connect to the server
+    print("trying to connect to server")
+    clientSocket.connect((serverName, serverPort))
+    quit()
 
-        if userInput.startswith('ls'):
-            print("Now printing out the directory")
-            # Tell the server we want to perform ls
-            sd.send_data(clientSocket, 'ls')
+    if userInput.startswith('ls'):
+        print("Now printing out the directory")
+        # Tell the server we want to perform ls
+        sd.send_data(clientSocket, 'ls')
 
 
 
-    except socket.error as errorFromSocket:
-        print("Error occurred with FTP: ", errorFromSocket)
+    # except socket.error as errorFromSocket:
+    #     print("Error occurred with FTP: ", errorFromSocket)
 
 
 
