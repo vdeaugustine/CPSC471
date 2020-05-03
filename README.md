@@ -8,7 +8,7 @@ How to execute:
 
 Run server application:
 
-python mserver.py <port number>
+python3 mserver.py <port number>
 
 Run client application:
 
