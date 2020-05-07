@@ -1,20 +1,47 @@
-Import the argparse, socket, sys, cmd, and os.
+from socket import *
+import ephemeral
+import sys
+import sendData as sd
+import receiveAllData as rAD
 
-Set up the arguments by assigning the server name and port number into the argument.
-
-If server port number is not digit:
-	Print "Port number not valid" and exit.
-Else:
-	Set server port number as int(server port number).
+if __name__ == "__main__":
+	Declare a variable called numArguments and set to len(sys.argv).
+	#If the number of arguments doesn't match, exit the program.
+	If numArguments == 3:
+		Set server name to sys.argv[1].
+		Set server port to sys.argv[2].
+		If server port is digit:
+			Convert the server port into an integer.
+		Else:
+			Print "Server has to be in numerical form." and exit.
+	Else:
+		Print "Invalid argument invocation." and exit.
+			
+	Create a client socket as IPv4 and in TCP form.
 	
-try:
-	Try to create a new client socket (IPv4, TCP format) if possible.
-
-	Now try to connect to the server with its name and port number if possible.
-
-	Prompt the user to enter the FTP command.
-	Continue to loop through the command indefinitely until user enters "quit".
-except socket error:
-	Print "An unexpected error has occured."
-
-Close the client socket.
+	Try to connect to the server by calling connect(server name, server port).
+	
+	If connect yields zero, then exit the program.
+	
+	Print out "ftp>" and have the user enter the command.
+	
+	If user command is 'ls':
+		Remind the server to print out the directory list by sending data over.
+		Create a new port as an int by receiving from the client socket.
+		Create a new socket as IPv4 and as TCP.
+		Now try to connect to the server by using the temporary port number.
+		Create a buffer that will read in the entire data over.
+		Now store all the data into the buffer.
+		While buffer is not empty:
+			Print out the entire directory list.
+		Close the socket.
+	
+	Else if user command is 'put':
+	
+	Else if user command is 'get':
+	
+	Else if user command is 'quit':
+		Disconnect from server and exit the program.
+	
+	Else:
+		Print "Invalid command."\
